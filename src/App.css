@@ -4,13 +4,26 @@
 body{
     background-color: #D2DBDC;
     margin: 0;
-font-family: 'Segoe UI', Helvetica Neue, Helvetica, Lucida Grande, Arial;
+    font-family: 'Segoe UI', Helvetica Neue, Helvetica, Lucida Grande, Arial;
 }
 
 .app-window{
     display: flex;
-    height: 100vh;
     background-color: #EDEDED;
+}
+@media (min-width: 1441px) {
+    .app-window{
+        height: 96vh;
+        margin: 0 auto;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+        width: 1396px;
+    }
+}
+@media (max-width: 1441px) {
+    .app-window{
+        height: 100vh;
+    }
 }
 
 .sidebar{
@@ -55,7 +68,7 @@ header{
 .search--input{
     background-color: #FFF;
     height: 40px;
-    border-radius: 20px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     padding: 0 10px;
@@ -81,13 +94,6 @@ header{
     background-color: rgba(0, 0, 0, 0.2)
 }
 
-
-
-
-
-
-
-
 .contentarea{
-    
+    flex: 1;
 }
