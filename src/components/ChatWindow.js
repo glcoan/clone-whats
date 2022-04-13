@@ -11,7 +11,7 @@ import SendIcon from '@material-ui/icons/Send';
 import MicIcon from '@material-ui/icons/Mic';
 
 
-export default ({data}) => {
+export default ({ data }) => {
 
     let recognition = null;
     let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -82,7 +82,7 @@ export default ({data}) => {
 
             </div>
 
-            <div className="chatWindow--emojiarea" style={{height: emojiOpen?"200px":"0px"}}>
+            <div className="chatWindow--emojiarea" style={{height: emojiOpen?"300px":"0px"}}>
                 <EmojiPicker
                     onEmojiClick={handleEmojiClick}
                     disableSearchBar

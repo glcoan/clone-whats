@@ -81,7 +81,7 @@
 }
 
 .chatWindow--emojiarea{
-    height: 200px;
+    height: 300px;
     overflow-y: hidden;
     transition: all ease 0.3s;
 }
@@ -90,5 +90,5 @@ aside.emoji-picker-react{
     background: none;
 }
 .emoji-picker-react .emoji-group:before{
-    background: none;
+    background: #EDEDED;
 }
