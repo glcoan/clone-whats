@@ -39,16 +39,13 @@ export default ({ data }) => {
 
             recognition.onstart = () => {
                 setListening(true);
-                console.log("Iniciou")
             }
             recognition.onend = () => {
                 setListening(false);
-                console.log("Finalizou")
             }
             recognition.onresult = (e) => {
                 setText( e.results[0][0].transcript );
                 console.log(e.results[0][0].transcript);
-                console.log("Resultado!");
             }
 
             recognition.start();
