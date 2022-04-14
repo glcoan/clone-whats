@@ -1,5 +1,5 @@
-import React from 'react';
-import './ChatIntro.css';
+import React from "react";
+import "./ChatIntro.css";
 
 export default () => {
     return (

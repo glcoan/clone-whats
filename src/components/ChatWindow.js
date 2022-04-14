@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
-import EmojiPicker from 'emoji-picker-react';
-import './ChatWindow.css';
+import React, { useState, useEffect, useRef } from "react";
+import EmojiPicker from "emoji-picker-react";
+import "./ChatWindow.css";
 
-import SearchIcon from '@material-ui/icons/Search';
-import AttachFileIcon from '@material-ui/icons/AttachFile';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
-import CloseIcon from '@material-ui/icons/Close';
-import SendIcon from '@material-ui/icons/Send';
-import MicIcon from '@material-ui/icons/Mic';
+import MessageItem from "./MessageItem";
+
+import SearchIcon from "@material-ui/icons/Search";
+import AttachFileIcon from "@material-ui/icons/AttachFile";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
+import CloseIcon from "@material-ui/icons/Close";
+import SendIcon from "@material-ui/icons/Send";
+import MicIcon from "@material-ui/icons/Mic";
 
 
-export default ({ data }) => {
+export default ({ user, data }) => {
+
+    const body = useRef();
 
     let recognition = null;
     let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -22,6 +26,44 @@ export default ({ data }) => {
     const [emojiOpen, setEmojiOpen] = useState(false);
     const [text, setText] = useState("");
     const [listening, setListening] = useState(false);
+    const [list, setList] = useState([
+        {author: 123, body: "bla bla bla"},
+        {author: 123, body: "bla bla"},
+        {author: 1234, body: "bla bla bla bla"},
+        {author: 123, body: "bla bla bla"},
+        {author: 123, body: "bla bla"},
+        {author: 1234, body: "bla bla bla bla"},
+        {author: 123, body: "bla bla bla"},
+        {author: 123, body: "bla bla"},
+        {author: 1234, body: "bla bla bla bla"},
+        {author: 123, body: "bla bla bla"},
+        {author: 123, body: "bla bla"},
+        {author: 1234, body: "bla bla bla bla"},
+        {author: 123, body: "bla bla bla"},
+        {author: 123, body: "bla bla"},
+        {author: 1234, body: "bla bla bla bla"},
+        {author: 123, body: "bla bla bla"},
+        {author: 123, body: "bla bla"},
+        {author: 1234, body: "bla bla bla bla"},
+        {author: 123, body: "bla bla bla"},
+        {author: 123, body: "bla bla"},
+        {author: 1234, body: "bla bla bla bla"},
+        {author: 123, body: "bla bla bla"},
+        {author: 123, body: "bla bla"},
+        {author: 1234, body: "bla bla bla bla"},
+        {author: 123, body: "bla bla bla"},
+        {author: 123, body: "bla bla"},
+        {author: 1234, body: "bla bla bla bla"},
+        {author: 123, body: "bla bla bla"},
+        {author: 123, body: "bla bla"},
+        {author: 1234, body: "bla bla bla bla"}
+    ]);
+
+    useEffect(()=>{
+        if(body.current.scrollHeight > body.current.offsetHeight){
+            body.current.scrollTop = body.current.scrollHeight - body.current.offsetHeight;
+        }
+    }, [list]);
 
     const handleEmojiClick = (e, emojiObject) => {
         setText( text + emojiObject.emoji )
@@ -75,8 +117,14 @@ export default ({ data }) => {
                 </div>
 
             </div>
-            <div className="chatWindow--body">
-
+            <div ref={body} className="chatWindow--body">
+                {list.map((item, key)=>(
+                    <MessageItem
+                        key={key}
+                        data={item}
+                        user={user}
+                    />
+                ))}
             </div>
 
             <div className="chatWindow--emojiarea" style={{height: emojiOpen?"300px":"0px"}}>
